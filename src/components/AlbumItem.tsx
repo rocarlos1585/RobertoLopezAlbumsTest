@@ -1,28 +1,32 @@
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons';
 import { Album, albumItemProps } from '../interfaces/interfaces';
 
+interface Props extends NativeStackScreenProps<any, any>{}
 
-export const AlbumItem = ({id, title}:albumItemProps) => {
+export const AlbumItem = ({id, title, navigation}:albumItemProps) => {
+  
   return (
-    <View style={styles.itemContainer}>
+    <TouchableOpacity onPress={()=>navigation.navigate('PhotosScreen')} activeOpacity={0.7} style={styles.itemContainer}>
         <Text>{title}</Text>
         <Icon name="calendar" size={20} color='red' />
-    </View>
+    </TouchableOpacity>
   )
 }
 
 
 const styles = StyleSheet.create({
     itemContainer:{
-        width:180,
+        width:190,
         height:70,
         borderRadius:10,
-        backgroundColor:'blue',
+        backgroundColor:'white',
         justifyContent:'center',
         alignItems:'center',
-        marginHorizontal:10,
+        
         marginVertical:10
     }
 })

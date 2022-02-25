@@ -8,6 +8,7 @@
  * @format
  */
 
+import { NavigationContainer } from '@react-navigation/native';
 import React from 'react';
 import {
   SafeAreaView,
@@ -19,14 +20,9 @@ import {
   View,
 } from 'react-native';
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-import { AlbumsScreen } from './src/screens/AlbumsScreen';
+
+import 'react-native-gesture-handler'
+import { StackNavigator } from './src/navigator/StackNavigator';
 
 
 
@@ -34,9 +30,12 @@ const App = () => {
 
 
   return (
-    <SafeAreaView style={{flex:1}}>
-      <AlbumsScreen/>
-    </SafeAreaView>
+    <NavigationContainer>
+      <SafeAreaView style={{flex:1}}>
+        <StackNavigator/>
+      </SafeAreaView>
+    </NavigationContainer>
+
   );
 };
 

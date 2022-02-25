@@ -6,5 +6,6 @@ export interface Album {
 
 export interface albumItemProps{
     id:number,
-    title:string
+    title:string,
+    navigation:any
 }
