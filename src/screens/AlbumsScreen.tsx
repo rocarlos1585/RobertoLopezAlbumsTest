@@ -21,17 +21,15 @@ export const AlbumsScreen = ({route, navigation}:Props) => {
   return (
     <View style={styles.albumsContainer}>
 
+        <FlatList
+            style={{backgroundColor:'#83ADB5', flex:1}}
+            columnWrapperStyle={{justifyContent:'space-between'}}
+            numColumns={2}
+            data={albums}
+            renderItem={renderItem}
+            keyExtractor={(item):any => item.id}
+        />
         
-            <FlatList
-                style={{backgroundColor:'#83ADB5', flex:1}}
-                columnWrapperStyle={{justifyContent:'space-between'}}
-                numColumns={2}
-                data={albums}
-                renderItem={renderItem}
-                keyExtractor={(item):any => item.id}
-            />
-        
-
     </View>
   )
 }

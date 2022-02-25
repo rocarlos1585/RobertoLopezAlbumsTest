@@ -8,9 +8,9 @@ import { Album, albumItemProps } from '../interfaces/interfaces';
 interface Props extends NativeStackScreenProps<any, any>{}
 
 export const AlbumItem = ({id, title, navigation}:albumItemProps) => {
-  
+
   return (
-    <TouchableOpacity onPress={()=>navigation.navigate('PhotosScreen')} activeOpacity={0.7} style={styles.itemContainer}>
+    <TouchableOpacity onPress={()=>navigation.navigate('PhotosScreen', {id})} activeOpacity={0.7} style={styles.itemContainer}>
         <Text>{title}</Text>
         <Icon name="calendar" size={20} color='red' />
     </TouchableOpacity>
