@@ -1,6 +1,6 @@
 import { NativeStackHeaderProps, NativeStackScreenProps } from '@react-navigation/native-stack'
 import React from 'react'
-import { ActivityIndicator, FlatList, Image, Text, View } from 'react-native'
+import { ActivityIndicator, Alert, FlatList, Image, Text, View } from 'react-native'
 import { PhotoItem } from '../components/PhotoItem'
 import { useGetPhotosByAlbum } from '../hooks/useGetPhotosByAlbum'
 
@@ -10,10 +10,12 @@ export const PhotosScreen = ({route, navigation}:Props) => {
 
     const {photos, isLoading} = useGetPhotosByAlbum(route.params?.id)
 
+    const click = (photoClicked:any) => {
+        Alert.alert(photoClicked.title)
+    }
+
     const renderItem = ( {item}:any ) => (
-        <PhotoItem photoProp={item}/>
-        
-        // <Image style={{width:200, height:200}} source={{uri:item.thumbnailUrl}}/>
+        <PhotoItem onPress={click} photoProp={item}/>
     );
     
     if(isLoading){
@@ -28,7 +30,7 @@ export const PhotosScreen = ({route, navigation}:Props) => {
         <View style={{flex:1}}>
 
             <FlatList
-                style={{backgroundColor:'#83ADB5', flex:1}}
+                style={{backgroundColor:'#764c6e', flex:1}}
                 columnWrapperStyle={{justifyContent:'center'}}
                 numColumns={2}
                 data={photos}
